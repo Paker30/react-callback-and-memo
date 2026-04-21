@@ -34,3 +34,21 @@ and instead of passing `configuration` we switch to `memoizedConfiguration`
 ```jsx
 <Header configuration={memoizedConfiguration}/>
 ```
+
+
+### Avoiding re-renders when `count` state changes
+
+In order to avoid `Header` to re-render each time `count` changes its value we need to memoize `Header`
+
+```jsx
+const MemoizeHeader = React.memo(Header);
+```
+
+and use it instead of `Header`
+
+```jsx
+<MemoizeHeader configuration={memoizedConfiguration}/>
+```
+
+>[!Note]
+>Everything works because `Header`'s object property is also memoized, if you don't memoize it, you'll be back to starting point: `Header` is re-rendered and `useEffect` is triggered

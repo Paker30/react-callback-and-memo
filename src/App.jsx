@@ -1,6 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Header } from './Header.jsx'
 
+const MemoizeHeader = React.memo(Header);
+
 const App = () => {
 
     const [count, setCount] = useState(0);
@@ -13,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-        <Header configuration={memoizedConfiguration}/>
+        <MemoizeHeader configuration={memoizedConfiguration}/>
       <span>Counts: {count}</span>
       <button onClick={() => setCount((prev) => prev+1)}>+1</button>
     </div>
