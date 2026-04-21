@@ -15,3 +15,22 @@ useEffect(() => {
 is going to be printed 🥲
 
 Reason is `configuration` is an object so its reference will be different each time `Header` is re-rendered.
+
+### Avoid `useEffect` triggering between re-renders
+
+In order to avoid trigger `useEffect` between re-renders we need to keep the same references, in order to do it we memoize `configuration`
+
+```jsx
+const configuration = {
+      id: '1',
+      name: 'default configuration'
+    };
+
+const memoizedConfiguration = useMemo(() => ({...configuration}), []);
+```
+
+and instead of passing `configuration` we switch to `memoizedConfiguration`
+
+```jsx
+<Header configuration={memoizedConfiguration}/>
+```

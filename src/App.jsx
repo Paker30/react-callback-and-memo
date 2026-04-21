@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Header } from './Header.jsx'
 
 const App = () => {
@@ -9,13 +9,15 @@ const App = () => {
       name: 'default configuration'
     };
 
+    const memoizedConfiguration = useMemo(() => ({...configuration}), []);
+
   return (
     <div>
-        <Header configuration={configuration}/>
+        <Header configuration={memoizedConfiguration}/>
       <span>Counts: {count}</span>
       <button onClick={() => setCount((prev) => prev+1)}>+1</button>
     </div>
   )
 };
 
-export default App
+export default App;
