@@ -56,3 +56,7 @@ and use it instead of `Header`
 ### Breaking Header ☠️
 
 We wanted to have a better message at our header so we've added a children, it looks harmless but... lets check browser console: re-render message is back 🤦
+
+#### Header is not re-rendered
+
+`children` is just an other property at `Header` and it must be handled in the same way we've handled `configuration`!

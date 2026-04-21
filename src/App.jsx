@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Header } from './Header.jsx';
 import { Message } from './Message.jsx';
 
@@ -13,11 +13,12 @@ const App = () => {
     };
 
     const memoizedConfiguration = useMemo(() => ({...configuration}), []);
+    const MemoizeMessage = useMemo(() => Message(), []);
 
   return (
     <div>
         <MemoizeHeader configuration={memoizedConfiguration}>
-          <Message />
+          {MemoizeMessage}
         </MemoizeHeader>
       <span>Counts: {count}</span>
       <button onClick={() => setCount((prev) => prev+1)}>+1</button>
