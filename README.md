@@ -52,3 +52,7 @@ and use it instead of `Header`
 
 >[!Note]
 >Everything works because `Header`'s object property is also memoized, if you don't memoize it, you'll be back to starting point: `Header` is re-rendered and `useEffect` is triggered
+
+### Breaking Header ☠️
+
+We wanted to have a better message at our header so we've added a children, it looks harmless but... lets check browser console: re-render message is back 🤦

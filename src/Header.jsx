@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-export const Header = ({ configuration }) => {
+export const Header = ({ configuration, children }) => {
 
     console.log('Header re-load');
 
@@ -8,5 +8,5 @@ export const Header = ({ configuration }) => {
         console.log('Header useEffect: "configuration" has changed');
     }, [configuration]);
 
-    return (<header>header</header>);
+    return (<header>{children}</header>);
 };
