@@ -7,13 +7,13 @@ My simple collection of example to understand how `useCallback`, `useMemo` and `
 Install modules
 
 ```bash
-npm install
+pnpm install
 ```
 
 Start dev server
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 ## Branch order
@@ -24,3 +24,22 @@ npm run dev
 4. component-rerendered-object-property-useMemo
 5. component-rerendered-due-to-children
 6. component-no-rerended-with-children
+7. closure
+
+## Scenario: closure
+
+In this branch I want to provide some examples of "stale closure" problem I can use to understand the issue.
+
+### useCallback
+
+```js
+ const printConfiguration = useCallback(()  => {
+        console.log('Current configuration:', configuration);
+    }, []);
+```
+
+Like in `useEffect` hook, dependency array is empty so `printConfiguration` won't be updated when state changes which means `configuration` will remains the same, it doesn't matter `configuration` is updated, `printConfiguration` will print `undefined`.
+
+### Refs
+
+As in `useCallback` example, because dependency array is empty, it doesn't matter how `configuration` changes, it prints `undefined`.
