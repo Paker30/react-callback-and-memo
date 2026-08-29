@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import { singleton } from './closure';
+export const Header = ({printConfiguration, configuration}) => {
 
-export const Header = () => {
-    return <div><h1>{singleton('I am the Header!')}</h1></div>;
+    printConfiguration();
+
+    return <div><h1>Stale closure</h1><h2>{configuration?.title}</h2></div>;
 };

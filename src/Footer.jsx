@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { singleton } from './closure';
-
-export const Footer = () => {
-    return <div><h1>{singleton('I am the Footer!')}</h1></div>;
+export const Footer = ({printConfiguration}) => {
+    printConfiguration();
+    return <div><h1>Footer</h1></div>;
 };
